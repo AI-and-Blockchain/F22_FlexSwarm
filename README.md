@@ -9,7 +9,7 @@ A Decentralized AI Architecture for Training an Ensemble Model With Flexible Lab
 	    * 
 	
 	2. Federated Learning:
-	    * Implement asynchronous model parameter (at least, list of numbers and strings) sharing
+	    * Implement asynchronous model parameters (at least, list of numbers and strings) sharing
 	    * 
 	
 	3. Blockchain Component:
