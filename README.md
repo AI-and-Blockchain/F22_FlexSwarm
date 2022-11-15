@@ -6,7 +6,7 @@ A Decentralized AI Architecture for Training an Ensemble Model With Flexible Lab
 ## TODO
 1. AI Component:
     * Create a custom loss function to minimize false positives
-    * 
+    * Document simulation and testing details
 
 2. Federated Learning:
     * Implement asynchronous model parameters (at least, list of numbers and strings) sharing
