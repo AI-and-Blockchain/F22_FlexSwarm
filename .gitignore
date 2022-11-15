@@ -2,3 +2,4 @@ test.ipynb
 SECRET.json
 courses/
 PySyft/
+.DS_Store
