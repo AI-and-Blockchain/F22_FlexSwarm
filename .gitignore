@@ -1,5 +1,6 @@
-test.ipynb
-SECRET.json
-courses/
-PySyft/
+# ignore all cache files
 .DS_Store
+
+# ignore all dataset folders
+Datasets
+AI Component/data
