@@ -1,6 +1,7 @@
-# AI & Blockchain Final Project
+# Federated Learning With Flexible Labels
 
-A Decentralized AI Architecture for Training an Ensemble Model With Flexible Labels
+**A Decentralized AI Architecture for Training an Ensemble Model With Flexible Labels**
+
 
 Project Overview:
 We want to build a decentralized AI architecture that could train an ensemble model using datasets with a flexible number of labels. Also, we want to use blockchain to incentivize data owners to train models and allow clients to use the ensemble model for prediction.
