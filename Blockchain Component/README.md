@@ -7,9 +7,11 @@
 
 ### Accomplishments so far:
 - Define the general workflow and the main idea in the blockchain component. 
+- Research on Algorand IPFS.
 - Research and planning to use [BigchainDB](https://www.bigchaindb.com/) to store all the data for this project. 
 - Still playing around with the [BigchainDB](https://www.bigchaindb.com/) to see how's the outcome for this project.
 
 ### Next step:
+- Determine the "token"
 - Smart Contract transaction implementation 
 - Fake data testing in BigchainDB
