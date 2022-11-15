@@ -2,6 +2,13 @@
 
 A Decentralized AI Architecture for Training an Ensemble Model With Flexible Labels
 
+Project Overview:
+We want to build a decentralized AI architecture that could train an ensemble model using datasets with a flexible number of labels. Also, we want to use blockchain to incentivize data owners to train models and allow clients to use the ensemble model for prediction.
+
+We plan to use the CIFAR-10 dataset for simulation and testing. Then, we evaluate the feasibility and performance of using an ensemble model for training and prediction.
+
+
+
 
 ## TODO
 1. AI Component:
