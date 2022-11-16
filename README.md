@@ -8,9 +8,6 @@ We want to build a decentralized AI architecture that could train an ensemble mo
 
 We plan to use the CIFAR-10 dataset for simulation and testing. Then, we evaluate the feasibility and performance of using an ensemble model for training and prediction.
 
-![Training Process Flow Chart](https://github.com/AI-and-Blockchain/F22_Federated_Learning_With_Flexible_Labels/blob/main/static/image/Training%20Process.png)
-![Prediction Flow Chart](https://github.com/AI-and-Blockchain/F22_Federated_Learning_With_Flexible_Labels/blob/main/static/image/Prediction.png)
-
 
 ## TODO
 1. AI Component:
