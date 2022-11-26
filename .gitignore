@@ -1,6 +1,8 @@
 # ignore all cache files
 .DS_Store
+__pycache__
 
-# ignore all dataset folders
+# ignore all dataset folders and files
 Datasets
 AI Component/data
+*.sqlite3
