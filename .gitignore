@@ -3,7 +3,8 @@
 __pycache__
 __.ipynb_checkpoints__
 
-# ignore all dataset folders
+
+# ignore all dataset folders and files
 Datasets
 AI Component/data
-
+*.sqlite3
