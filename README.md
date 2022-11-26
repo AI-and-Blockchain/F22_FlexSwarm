@@ -13,7 +13,10 @@ We plan to use the CIFAR-10 dataset for simulation and testing. Then, we evaluat
 ## TODO
 1. AI Component:
     * Create a custom loss function to minimize false positives
-    * Document simulation and testing details
+      -- F1 score loss function has a gradient optimization problem. We might implement soft f1 if we have time, but we currently only use f1 score as an evaluation metric
+    * Document simulation and testing details (finished)
+    * Create build_model function
+    * Run simulation
 
 2. Federated Learning:
     * Implement asynchronous model parameters (at least, list of numbers and strings) sharing
