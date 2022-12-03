@@ -118,22 +118,23 @@ def get_dataset(data_df: pd.DataFrame, seed=20, **kwargs):
 class Dataset(torch.utils.data.Dataset):
     """_summary_"""
 
-    def __init__(self, data, img_path, feature_extractor, vit_model, transform, device):
+    def __init__(self, images, labels, feature_extractor, transform, 
+                 pre_trained_model=None, device='cpu'):
         """_summary_
 
         Args:
-            data (_type_): _description_
-            img_path (_type_): _description_
+            images (_type_): _description_
+            labels (_type_): _description_
             feature_extractor (_type_): _description_
-            vit_model (_type_): _description_
+            pre_trained_model (_type_): _description_
             transform (_type_): _description_
             device (_type_): _description_
-        """
-        self.images = [f'{img_path}/{i}' for i in data.image]
-        self.labels = data.label.tolist()
+        """        
+        self.images = images
+        self.labels = labels
         self.transform = transform
         self.feature_extractor = feature_extractor
-        self.vit_model = vit_model
+        self.pre_trained_model = pre_trained_model
         self.device = device
 
     def __len__(self):
@@ -154,25 +155,36 @@ class Dataset(torch.utils.data.Dataset):
             _type_: _description_
         """
         image = Image.open(self.images[index])
-        if self.transform is not None:
-            image = np.array(image)
-            image = Image.fromarray(
-                self.transform(image=image)['image'], 'RGB')
-        image = self.feature_extractor(image, return_tensors='pt')[
-            'pixel_values'][0]
-        logits = self.vit_model(image.unsqueeze(0).to(self.device)) \
-            .hidden_states[-1][:, -1, :].cpu().squeeze().detach()
+        image = np.array(image.convert('RGB'))
+        
+        if self.transform is not None:    
+            image = self.transform(image=image)['image']
+        
+        if self.feature_extractor is not None:
+            image = Image.fromarray(image, 'RGB')
+            image = self.feature_extractor(image, return_tensors='pt')[
+                'pixel_values'][0]
+        else:
+            image = torch.tensor(image)
+        
+        if self.pre_trained_model is not None:
+            logits = self.pre_trained_model(image.unsqueeze(0).to(self.device)) \
+                .hidden_states[-1][:, -1, :].cpu().squeeze().detach()
+        else:
+            logits = image
         return logits, self.labels[index]
 
 
-def get_loader(data, feature_extractor, vit_model, transform, batch_size=32, shuffle=True):
+def get_loader(images, labels, feature_extractor, transform, 
+               pre_trained_model=None, device='cpu', batch_size=32, shuffle=True):
     """_summary_
 
     Args:
-        data (_type_): _description_
+        images (_type_): _description_
+        labels (_type_): _description_
         feature_extractor (_type_): _description_
-        vit_model (_type_): _description_
         transform (_type_): _description_
+        pre_trained_model (_type_, optional): _description_. Defaults to None.
         batch_size (int, optional): _description_. Defaults to 32.
         shuffle (bool, optional): _description_. Defaults to True.
 
@@ -180,7 +192,8 @@ def get_loader(data, feature_extractor, vit_model, transform, batch_size=32, shu
         _type_: _description_
     """
     return torch.utils.data.DataLoader(
-        Dataset(data, feature_extractor, vit_model, transform),
+        Dataset(images, labels, feature_extractor, transform,
+                pre_trained_model=pre_trained_model, device=device),
         batch_size=batch_size,
         shuffle=shuffle
     )
