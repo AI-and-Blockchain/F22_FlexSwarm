@@ -1,7 +1,41 @@
 import pandas as pd
 import numpy as np
 
-def get_dataset(data_df: pd.DataFrame, label2id, drop=True, **kwargs):
+
+def get_dataset(data_df: pd.DataFrame, seed=20, **kwargs):
+    """Get a custom dataset by defining label and the associated count value or fraction
+
+    Args:
+        data_df (pd.DataFrame): _description_
+        kwargs: label'
+
+    Returns:
+        _type_: _description_
+    """
+    np.random.seed(seed)
+
+    data_df = data_df.reset_index(drop=True)
+
+    label_count_df = pd.DataFrame({
+        'label': list(kwargs.keys()),
+        'count': list(kwargs.values())
+    })
+
+    label_count_dict = dict(
+        zip(label_count_df['label'], label_count_df['count']))
+
+    labels = list(label_count_dict.keys())
+    # print(labels)
+    # print([len(data_df.query(f'label_name == "{label}"')) for label in labels ])
+    return_data_idx = [i for label in labels
+                       for i in data_df.query(f'label_name == "{label}"')
+                       .sample(label_count_dict[label]).index
+                       ]
+
+    return data_df.iloc[return_data_idx].reset_index(drop=True)
+
+
+def get_dataset_old(data_df: pd.DataFrame, label2id, drop=True, **kwargs):
     """Get a custom dataset by defining label and the associated count value or fraction
 
     Args:
