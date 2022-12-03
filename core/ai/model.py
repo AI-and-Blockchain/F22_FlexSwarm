@@ -1,4 +1,4 @@
-import torch.nn import nn
+import torch.nn as nn
 from transformers import ViTFeatureExtractor, ViTForImageClassification
 
 
