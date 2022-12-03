@@ -15,6 +15,7 @@ We plan to use the CIFAR-10 dataset for simulation and testing. Then, we evaluat
     * Create a custom loss function to minimize false positives
       -- F1 score loss function has a gradient optimization problem. We might implement soft f1 if we have time, but we currently only use f1 score as an evaluation metric
     * Document simulation and testing details (finished)
+    * Dataset partition (finished, save data owner information to an excel file)
     * Create build_model function
     * Run simulation
 
