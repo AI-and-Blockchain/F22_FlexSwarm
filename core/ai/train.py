@@ -86,7 +86,7 @@ def train(dataset_path, data_owner_id, modules, save_model_path, num_epochs, lea
             epoch_acc_sum[0] += (logits.argmax(1) == batch_labels).sum().item()
             epoch_acc_sum[1] += len(batch_labels)
 
-        print(f'[ {epoch:2d}:{num_epochs} ]\tloss={np.mean(epoch_loss_list):.3f}, \
+        print(f'[ {epoch+1:2d}:{num_epochs} ]\tloss={np.mean(epoch_loss_list):.3f}, \
             acc={epoch_acc_sum[0]}/{epoch_acc_sum[1]}={epoch_acc_sum[0]/epoch_acc_sum[1]:.3f}')
 
     # Save models
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('--modules', type=str) # Example: LazyBatchNorm1d() | LazyLinear(128) | GELU()
     parser.add_argument('--epochs', type=int, default=10)
     parser.add_argument('--lr', type=float, default=0.001)
-    parser.add_argument('--cpu', default=True, action='store_true')
+    parser.add_argument('--cpu', default=False, action='store_true')
     
     args = parser.parse_args()
     
@@ -128,7 +128,9 @@ if __name__ == '__main__':
     # Set the model without the output layer
     modules = [eval(f'nn.{layer}') for layer in modules]
     
-    print(f'Training data owner {data_owner_id}\'s dataset on {device}...')    
+    print(f'Training data owner {data_owner_id}\'s dataset on {device} ...')    
     train(dataset_path, data_owner_id, modules, save_model_path, num_epochs, learning_rate, device)
+    
+    print('\n\n\n')
     
     
