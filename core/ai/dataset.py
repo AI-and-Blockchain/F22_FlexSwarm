@@ -114,11 +114,27 @@ def get_dataset(data_df: pd.DataFrame, seed=20, **kwargs):
     return data_df.iloc[return_data_idx].reset_index(drop=True)
 
 
+def get_test_dataset(dataset_path, SEED=20):
+    """Get test dataset from a random seed
+
+    Args:
+        dataset_path (_type_): _description_
+        SEED (int, optional): _description_. Defaults to 20.
+
+    Returns:
+        _type_: _description_
+    """
+    np.random.seed(SEED)
+    data_df = pd.read_csv(dataset_path + '/data.csv')
+    test_dataset = data_df.groupby('label') .sample(frac=.2) \
+        .query('image != "51101.png"')  # 51101.png has a loading problem
+    return test_dataset
+
 
 class Dataset(torch.utils.data.Dataset):
     """_summary_"""
 
-    def __init__(self, images, labels, feature_extractor, transform, 
+    def __init__(self, images, labels, feature_extractor, transform,
                  pre_trained_model=None, device='cpu'):
         """_summary_
 
@@ -129,7 +145,7 @@ class Dataset(torch.utils.data.Dataset):
             pre_trained_model (_type_): _description_
             transform (_type_): _description_
             device (_type_): _description_
-        """        
+        """
         self.images = images
         self.labels = labels
         self.transform = transform
@@ -156,17 +172,17 @@ class Dataset(torch.utils.data.Dataset):
         """
         image = Image.open(self.images[index])
         image = np.array(image.convert('RGB'))
-        
-        if self.transform is not None:    
+
+        if self.transform is not None:
             image = self.transform(image=image)['image']
-        
+
         if self.feature_extractor is not None:
             image = Image.fromarray(image, 'RGB')
             image = self.feature_extractor(image, return_tensors='pt')[
                 'pixel_values'][0]
         else:
             image = torch.tensor(image)
-        
+
         if self.pre_trained_model is not None:
             logits = self.pre_trained_model(image.unsqueeze(0).to(self.device)) \
                 .hidden_states[-1][:, -1, :].cpu().squeeze().detach()
@@ -175,7 +191,7 @@ class Dataset(torch.utils.data.Dataset):
         return logits, self.labels[index]
 
 
-def get_loader(images, labels, feature_extractor, transform, 
+def get_loader(images, labels, feature_extractor, transform,
                pre_trained_model=None, device='cpu', batch_size=32, shuffle=True):
     """_summary_
 
