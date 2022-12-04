@@ -98,6 +98,10 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--id', type=str)
     parser.add_argument('--modules', type=str) # Example: LazyBatchNorm1d() | LazyLinear(128) | GELU()
+    parser.add_argument('--epochs', type=int, default=10)
+    parser.add_argument('--lr', type=float, default=0.001)
+    parser.add_argument('--cpu', default=True, action='store_true')
+    
     args = parser.parse_args()
     
     # Get data owner id of interest
@@ -106,26 +110,25 @@ if __name__ == '__main__':
     # Get model structure layer lists
     modules = args.modules.replace(' ', '').split('|')
     
+    # Get training epochs
+    num_epochs = args.epochs
+
+    # Get training hyperparameters -- learning rate
+    learning_rate = args.lr
+    
     # Load project paths
     dataset_path = './Datasets/CIFAR10'
     
     # Get applicable training device
-    device = get_device()
+    device = get_device(cpu=args.cpu)
 
     # Set the path to save the model
     save_model_path = f'./saved_models/model_{data_owner_id}.pt'
 
-    # Set training epochs
-    num_epochs = 10
-
-    # Training hyperparameters
-    learning_rate = 0.001
-
     # Set the model without the output layer
     modules = [eval(f'nn.{layer}') for layer in modules]
     
-    print(f'Training data owner {data_owner_id}\'s dataset...')    
+    print(f'Training data owner {data_owner_id}\'s dataset on {device}...')    
     train(dataset_path, data_owner_id, modules, save_model_path, num_epochs, learning_rate, device)
     
-    # python ./core/ai/train.py --id A --modules "LazyBatchNorm1d() | LazyLinear(128) | GELU()"
     
