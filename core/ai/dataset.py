@@ -13,6 +13,8 @@ import torchvision.transforms as transforms
 # Progress bar
 from tqdm.autonotebook import tqdm
 
+from utils import get_random_hundreds
+
 
 def load_cifar10(dataset_path='../Datasets/CIFAR10', cache_path='../cache'):
     """_summary_
@@ -78,7 +80,7 @@ def load_cifar10(dataset_path='../Datasets/CIFAR10', cache_path='../cache'):
         label_name=[label_map[label] for label in labels]
     ))
     data_df.to_csv(f'{dataset_path}/data.csv', index=False)
-    data_df = pd.read_csv(f'{dataset_path}/data.csv')
+    
 
 
 def get_dataset(data_df: pd.DataFrame, seed=20, **kwargs):
@@ -129,6 +131,19 @@ def get_test_dataset(dataset_path, SEED=20):
     test_dataset = data_df.groupby('label') .sample(frac=.2) \
         .query('image != "51101.png"')  # 51101.png has a loading problem
     return test_dataset
+
+
+def generate_data_owner_datasets(labels):
+    """Generate data owner datasets by labels
+
+    Args:
+        labels (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
+    label_count_info = {label:get_random_hundreds() for label in labels}
+    return label_count_info
 
 
 class Dataset(torch.utils.data.Dataset):
