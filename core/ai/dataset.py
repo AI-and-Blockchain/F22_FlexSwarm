@@ -78,7 +78,7 @@ def load_cifar10(dataset_path='../Datasets/CIFAR10', cache_path='../cache'):
         label_name=[label_map[label] for label in labels]
     ))
     data_df.to_csv(f'{dataset_path}/data.csv', index=False)
-    data_df = pd.read_csv(f'{dataset_path}/data.csv')
+    
 
 
 def get_dataset(data_df: pd.DataFrame, seed=20, **kwargs):
