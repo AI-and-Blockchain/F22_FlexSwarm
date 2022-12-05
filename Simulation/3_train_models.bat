@@ -30,5 +30,4 @@ python ./core/ai/train.py --id T1 --modules "LazyBatchNorm1d() | LazyLinear(32) 
 python ./core/ai/train.py --id T2 --modules "LazyBatchNorm1d() | LazyLinear(64) | GELU()"
 
 @REM Train data owner T3's model, 
-python ./core/ai/train.py --id T3 --modules "LazyBatchNorm1d() | LazyLinear(32) | GELU()" --epochs 3
-
+python ./core/ai/train.py --id T3 --modules "LazyBatchNorm1d() | LazyLinear(1024) | GELU() | LazyLinear(256) | GELU() | LazyLinear(64) | GELU()" --epochs 3
