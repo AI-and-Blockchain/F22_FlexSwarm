@@ -4,6 +4,7 @@ import random
 import numpy as np
 import pandas as pd
 
+
 def seed_everything(seed=20):
     """set seed for all"""
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -13,7 +14,8 @@ def seed_everything(seed=20):
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
-    
+
+
 def get_device(cpu=False):
     """Get applicable training device
 
@@ -22,9 +24,10 @@ def get_device(cpu=False):
 
     Returns:
         _type_: _description_
-    """    
-    if cpu: return 'cpu'
-    if hasattr(torch.backends, 'mps'):    
+    """
+    if cpu:
+        return 'cpu'
+    if hasattr(torch.backends, 'mps'):
         if torch.backends.mps.is_built():
             return 'mps'
     return 'cuda:0' if torch.cuda.is_available() else 'cpu'
@@ -98,6 +101,7 @@ def print_evaluation_metrics(labels, predictions, label2id, title):
     print(f'{title} weighted f1 score: {weighted_f1_score:.4f}')
     return weighted_f1_score
 
+
 def load_data_owner_dataset(dataset_path, data_owner_id):
     """Load data owner dataset
 
@@ -107,12 +111,25 @@ def load_data_owner_dataset(dataset_path, data_owner_id):
 
     Returns:
         _type_: _description_
-    """ 
+    """
     # Load image paths
     img_path = dataset_path + '/images'
-    
+
     data_owner_dataset = pd.read_excel(
         dataset_path + '/CIFAR10dataOwnerInfo.xlsx', sheet_name=data_owner_id)
     data_owner_dataset.image = [
         f'{img_path}/{image}' for image in data_owner_dataset.image]
     return data_owner_dataset
+
+
+def get_random_hundreds(low=500, high=3000):
+    """Generate a random hundreds, default: between 500 ~ 3000
+
+    Args:
+        low (int, optional): _description_. Defaults to 500.
+        high (int, optional): _description_. Defaults to 3000.
+
+    Returns:
+        _type_: _description_
+    """
+    return round(random.randint(low//100, high//100)) * 100
