@@ -1,0 +1,58 @@
+{
+    "A": [
+        "trainer",
+        "plane, car, ship, horse, truck, other"
+    ],
+    "B": [
+        "trainer",
+        "truck, car, other"
+    ],
+    "C": [
+        "trainer",
+        "plane, truck, ship, other"
+    ],
+    "D": [
+        "trainer",
+        "ship, plane"
+    ],
+    "E": [
+        "trainer",
+        "plane, car, ship, other"
+    ],
+    "F": [
+        "trainer",
+        "cat, dog, other"
+    ],
+    "G": [
+        "trainer",
+        "truck, other"
+    ],
+    "T1": [
+        "trainer",
+        "truck, car"
+    ],
+    "T2": [
+        "trainer",
+        "plane, ship"
+    ],
+    "T3": [
+        "trainer",
+        "cat, dog"
+    ],
+    "X": [
+        "client",
+        "truck"
+    ],
+    "Y": [
+        "client",
+        "truck"
+    ],
+    "Z": [
+        "client",
+        "plane, ship"
+    ],
+    "T4": [
+        "client",
+        "horse"
+    ]
+}
