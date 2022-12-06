@@ -1,0 +1,104 @@
+Extracting data owner A's model to ./model_parameters/model_A.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=128, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=128, out_features=6, bias=True)
+)
+
+
+
+Extracting data owner B's model to ./model_parameters/model_B.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=128, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=128, out_features=3, bias=True)
+)
+
+
+
+Extracting data owner C's model to ./model_parameters/model_C.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=256, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=256, out_features=4, bias=True)
+)
+
+
+
+Extracting data owner D's model to ./model_parameters/model_D.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=128, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=128, out_features=2, bias=True)
+)
+
+
+
+Extracting data owner E's model to ./model_parameters/model_E.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=128, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=128, out_features=64, bias=True)
+  (4): GELU()
+  (5): Linear(in_features=64, out_features=4, bias=True)
+)
+
+
+
+Extracting data owner F's model to ./model_parameters/model_F.json ...
+Sequential(
+  (0): Linear(in_features=768, out_features=128, bias=True)
+  (1): GELU()
+  (2): Linear(in_features=128, out_features=3, bias=True)
+)
+
+
+
+Extracting data owner G's model to ./model_parameters/model_G.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=256, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=256, out_features=64, bias=True)
+  (4): GELU()
+  (5): Linear(in_features=64, out_features=2, bias=True)
+)
+
+
+
+Extracting data owner T1's model to ./model_parameters/model_T1.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=32, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=32, out_features=2, bias=True)
+)
+
+
+
+Extracting data owner T2's model to ./model_parameters/model_T2.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=64, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=64, out_features=2, bias=True)
+)
+
+
+
+Extracting data owner T3's model to ./model_parameters/model_T3.json ...
+Sequential(
+  (0): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (1): Linear(in_features=768, out_features=1024, bias=True)
+  (2): GELU()
+  (3): Linear(in_features=1024, out_features=256, bias=True)
+  (4): GELU()
+  (5): Linear(in_features=256, out_features=64, bias=True)
+  (6): GELU()
+  (7): Linear(in_features=64, out_features=2, bias=True)
+)

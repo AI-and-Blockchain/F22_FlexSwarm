@@ -1,5 +1,8 @@
+import torch
 import torch.nn as nn
 from transformers import ViTFeatureExtractor, ViTForImageClassification
+
+from utils import seed_everything
 
 
 def get_vit_model(device='cpu'):
@@ -49,3 +52,47 @@ class CNNClassifier(nn.Module):
         x = self.dropout(x)
         x = self.fc_out(x)
         return x
+
+
+def get_model_parameters(model_path):
+    """_summary_
+
+    Args:
+        model_path (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
+    seed_everything()
+    model = torch.load(model_path, map_location='cpu')
+    model.eval()
+    for param in model.parameters():
+        param.requires_grad = False
+    print(model)
+
+    # get model structure
+    model_structure = '|'.join(
+        [layer_str.split('): ')[1] for layer_str in str(model).split('\n')[1:-1]])
+
+    # get model parameters
+    with torch.no_grad():
+        model_parameters = {name: val.detach().tolist()
+                                 for name, val in model.named_parameters()}
+
+    # Since the model uses normalization, we also need to send the mean and variance
+    try:
+        model_parameters['0.running_mean'] = model[0].running_mean.tolist()
+        model_parameters['0.running_var'] = model[0].running_var.tolist()
+    except:
+        ...
+
+    # print weight name and shape
+    model_parameters_names = list(model_parameters.keys())
+    model_parameters_vals = list(model_parameters.values())
+    model_parameters_names = '|'.join(model_parameters_names)
+
+    return {
+        'model_structure': model_structure,
+        'model_parameters_names': model_parameters_names,
+        'model_parameters_vals': model_parameters_vals
+    }
