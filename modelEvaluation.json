@@ -1,0 +1,21 @@
+{
+    "Baseline": {
+        "label": "plane|car|bird|cat|deer|dog|frog|horse|ship|truck",
+        "score": [
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6,
+            0.6
+        ]
+    },
+    "A": {
+        "label": "plane|car|ship|horse|truck",
+        "score": 0.8
+    }
+}
