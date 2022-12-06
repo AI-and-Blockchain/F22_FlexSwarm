@@ -1,0 +1,13 @@
+Start loading all images and labels
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./Datasets/cache\cifar-10-python.tar.gz
+170499072it [00:05, 30704865.25it/s]
+Extracting ./Datasets/cache\cifar-10-python.tar.gz to ./Datasets/cache
+Files already downloaded and verified
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50000/50000 [01:16<00:00, 656.31it/s]
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:20<00:00, 476.47it/s] 
+       image  label label_name
+0  00001.png      6       frog
+1  00002.png      9      truck
+2  00003.png      9      truck
+3  00004.png      4       deer
+4  00005.png      1        car
