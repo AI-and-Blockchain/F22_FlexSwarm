@@ -133,3 +133,9 @@ def get_random_hundreds(low=500, high=3000):
         _type_: _description_
     """
     return round(random.randint(low//100, high//100)) * 100
+
+def generate_list_by_sum(m, n):
+    arr = [0] * m
+    for i in range(n):
+        arr[random.randint(0, m-1)] += 1
+    return arr
