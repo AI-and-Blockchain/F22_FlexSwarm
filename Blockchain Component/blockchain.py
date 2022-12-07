@@ -236,6 +236,16 @@ def writeToFile(domain):
     fi.write(json_object)
     fi.close()
 
+
+
+def verifyKey(key):
+    fi = open("key.txt", "r")
+    lik =fi.read()
+    if key in lik:
+        return True
+    return False
+
+
 if __name__ == "__main__":
 
     issuers = os.environ.get("ISSUER_PUBLICKEY")
@@ -245,12 +255,12 @@ if __name__ == "__main__":
     # Save the model into Blockchain database
     # saveToBlockchain(issuers)
 
-
-    domain = "model_A.json"
-    # writeToFile(domain)
-    # print(queryMetaData(domain))
-
     # Based on the client label, do the data retrieved from the blockchain 
     label = 'car'
-    filterByLabel(label)
+    key = 'mqLfKUHwrmbQLfkFoeBXDwipPNkBKYbJFwXfQNAGWxegTzoEtknFYeqkPlUJtQSwfwIRByzIbcCZSZXveKgqGNHibYveYwYwyzEixYPsL'
+    if verifyKey(key):
+        filterByLabel(label)
+        # print("good")
+    else:
+        print("incorrect key")
     
