@@ -8,3 +8,6 @@ __.ipynb_checkpoints__
 Datasets
 AI Component/data
 *.sqlite3
+
+# ignore venv
+venv
