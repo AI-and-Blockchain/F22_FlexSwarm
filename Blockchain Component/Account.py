@@ -1,8 +1,9 @@
 class Account:
-    def __init__(self, address):
-        self.public_key = address.public_key
-        self.private_key = address.private_key
+    def __init__(self, address, private_key):
+        self.public_key = address
+        self.private_key = private_key
         self.token = 100
+    
 
     # A function to add token
     def addToken(self, number):
