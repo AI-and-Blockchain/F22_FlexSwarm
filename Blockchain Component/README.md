@@ -1,17 +1,9 @@
 ## Blockchain component
 
 ### Main Idea
-- The Blockchain component is mainly focus on the smart contacts sector.Key idea is establishing the transaction between user and trainer. [After you pay, a certain amount of data from a model will be given to you to use the model.] 
-- Reward system -> If the trainer trained a "perfect" model, we will reward the trainer some "tokens" (testnet tokens)
+- [BigchainDB](https://www.bigchaindb.com/) is being used in this project. We use [BigchainDB](https://www.bigchaindb.com/) act as the database to store our model data, such as model structure, model parameter, model parameters values and model label
 
-
-### Accomplishments so far:
-- Define the general workflow and the main idea in the blockchain component. 
-- Research on Algorand IPFS.
-- Research and planning to use [BigchainDB](https://www.bigchaindb.com/) to store all the data for this project. 
-- Still playing around with the [BigchainDB](https://www.bigchaindb.com/) to see how's the outcome for this project.
-
-### Next step:
-- Determine the "token"
-- Smart Contract transaction implementation 
-- Fake data testing in BigchainDB
+### Details
+- Total 2239 transaction block used. 
+- Over 2 millions data stored. 
+- Unable to save them into one block since the data are tooo big, hence, we separate the data into over 100+ block for one model, and reconstruct them later. 
