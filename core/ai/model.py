@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 from transformers import ViTFeatureExtractor, ViTForImageClassification
-
 from utils import seed_everything
 
 
