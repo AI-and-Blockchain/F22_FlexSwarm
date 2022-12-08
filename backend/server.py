@@ -1,15 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-
-import random
-from algosdk import mnemonic, encoding, account
-from algosdk.v2client import algod
-from algosdk.future import transaction
-from algosdk.future.transaction import LogicSigTransaction, PaymentTxn, AssetTransferTxn, wait_for_confirmation
-from algosdk import constants
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -17,6 +8,7 @@ cors = CORS(app)
 app.config['DEBUG'] = True
 
 
+# Testing endpoint
 @app.route('/', methods=['Get'])
 def index():
 
@@ -44,7 +36,7 @@ def generateAcnt():
   }
   """
   # Change path to access sibling directory module
-  import sys, os
+  import sys
   sys.path.append("..")
   from core.blockchain.smart import generate_algorand_keypair
   data = request.json
