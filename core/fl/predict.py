@@ -15,28 +15,32 @@ def predict(data_loader, model, device='cpu'):
         predictions += logits.argmax(1).cpu().tolist()
     return predictions
 
-def predict_from_dataset(dataset_path, data_owner_id, client_id, label_requested, model, device):
+def predict_from_dataset(dataset_path, data_owner_id, client_id, model_label, model, device):
     # Load image paths
     img_path = dataset_path + '/images'
     
     # Set a fixed random seed
     seed_everything()
-    
+    _,_,label2id_,id2label_=label_enc(load_data_owner_dataset(dataset_path, data_owner_id))
     # Load client dataset
-    client_dataset = load_data_owner_dataset(dataset_path, data_owner_id)
-    num_classes = client_dataset.label_name.nunique()
-    images, labels, label2id, id2label = label_enc(client_dataset)
-    
-    # Get client dataset data loader
-    vit_feature_extractor, vit_model = get_vit_model(device)
-    eval_transform = A.Compose([A.Resize(224, 224)])
-    train_data_loader = get_loader(images, labels, vit_feature_extractor, eval_transform,
-                                   pre_trained_model=vit_model, device=device, shuffle=False)
-    
-    # Get data owner's model
-    print(train_data_loader,model,"CNM")
-    predictions = predict(train_data_loader, model, device)
-    
+    client_dataset_ = load_data_owner_dataset(dataset_path, client_id)
+    num_classes = client_dataset_.label_name.unique()
+    predictions_=[]
+    for i in num_classes:
+        if i in model_label:
+            client_dataset = client_dataset_.groupby('label_name').get_group(i)
+            images, labels, label2id, id2label = label_enc(client_dataset)
+             # Get client dataset data loader
+            vit_feature_extractor, vit_model = get_vit_model(device)
+            eval_transform = A.Compose([A.Resize(224, 224)])
+            train_data_loader = get_loader(images, labels, vit_feature_extractor, eval_transform,
+                                           pre_trained_model=vit_model, device=device, shuffle=False)
+
+            # Get data owner's model
+            print(train_data_loader,model)
+            predictions = predict(train_data_loader, model, device)
+            result =  [id2label_[elem] for elem in predictions]
+            predictions_+=result
+            print(len(predictions_))
     # Save predictions
-    client_dataset['prediction'] = predictions
-    client_dataset.to_csv('Client_{client_id}_{label_requested}.csv')
+    return predictions_
