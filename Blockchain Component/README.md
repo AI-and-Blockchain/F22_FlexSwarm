@@ -8,7 +8,7 @@ Before you run the program file, there are couple command you need to install.
 pip3 install bigchaindb_driver
 pip3 install py-algorand-sdk
 pip3 install pyteal
-pip3 install dotenv
+pip3 install python-dotenv
 ```
 
 ### Main Idea
