@@ -17,10 +17,10 @@ def loadJson():
     Returns:
         _list_: a completed list of all the file with file size less than 1000K bytes
     """
-    entries = os.listdir('../model_parameters/')
+    entries = os.listdir('../../model_parameters/')
     final_fileList = []
     for i in entries:
-        file_size = os.path.getsize('../model_parameters/' + i)
+        file_size = os.path.getsize('../../model_parameters/' + i)
         # print(i, file_size, "bytes")
         if(file_size <= 10000000):
             final_fileList.append(i)
@@ -86,7 +86,7 @@ def getTxnID(domain):
         dictionary: A dictionary that contain all the ordered transaction id for this domain. [such as transactionId.txt]
     """
     result = (queryMetaData(domain))
-    fi = open('../model_parameters/' + domain)
+    fi = open('../../model_parameters/' + domain)
     data = json.load(fi)
     par_length = len(data['model_parameters_vals'])
     print(par_length)
@@ -126,7 +126,7 @@ def filterByLabel(label):
     allFile = loadJson()
     target = []
     for i in allFile:
-        fi = open('../model_parameters/' + i)
+        fi = open('../../model_parameters/' + i)
         data = json.load(fi)
         detail = data['label'].split("|")
         if label in detail:

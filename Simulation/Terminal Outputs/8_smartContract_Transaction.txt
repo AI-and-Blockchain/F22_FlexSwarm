@@ -1,0 +1,3 @@
+[<algosdk.future.transaction.SignedTransaction object at 0x7fbe48ada208>, <algosdk.future.transaction.SignedTransaction object at 0x7fbe48ada630>]
+Here is the transaction group id:  b'\x83\xb3\xefF\xa5\x89\xf4\xea\xaa\xf3C\x7f\xb8\x8c\xf2\xba\xa5\xd1x\x06\x03(i&_\xcfem\x05;d\x86'
+Send transaction with txID: MKFBI2BPFUES73XZFOT3NBHDC7DLWPSVOCNE4Z56EYHILFN5W7QQ
