@@ -34,7 +34,7 @@ def predict_from_dataset(dataset_path, data_owner_id, client_id, label_requested
                                    pre_trained_model=vit_model, device=device, shuffle=False)
     
     # Get data owner's model
-    print(train_data_loader,model)
+    print(train_data_loader,model,"CNM")
     predictions = predict(train_data_loader, model, device)
     
     # Save predictions
