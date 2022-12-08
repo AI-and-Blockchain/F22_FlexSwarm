@@ -8,11 +8,21 @@ import ModelUpload from './pages/model-upload/ModelUpload';
 
 function App() {
 
+  const [website] = useState('http://localhost:8888')
   const [user, setUser] = useState()
+  const [login, setLogin] = useState(false);
+  const [pubKey, setPubKey] = useState();
+  const [priKey, setPriKey] = useState();
+  const [mneum, setMneum] = useState();
 
   return (
     <ClientContext.Provider value={{
-      user, setUser
+      user, setUser,
+      login, setLogin,
+      pubKey, setPubKey,
+      priKey, setPriKey,
+      mneum, setMneum,
+      website
     }}>
 
 

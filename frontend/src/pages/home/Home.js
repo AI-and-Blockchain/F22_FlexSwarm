@@ -5,14 +5,18 @@ import "./Home.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import { ClientContext } from '../../context/ClientContext';
+
 
 
 const Home = () => {
   
   let navigate = useNavigate();
-  const [pubKey, setPubKey] = useState();
-  const [login, setLogin] = useState(false);
-  const [testRes, setTestRes] = useState();
+  const {pubKey, setPubKey} = useContext(ClientContext);
+  const {priKey, setPriKey} = useContext(ClientContext);
+  const {mneum, setMneum} = useContext(ClientContext);
+  const {login, setLogin} = useContext(ClientContext);
+
 
   // connect with public key /or mneumonics
   // const loginCheck = async () => {
@@ -23,18 +27,11 @@ const Home = () => {
   const createAccount = async (name) => {
     await axios.post('http://localhost:8888/generateAcnt', {'params': {'name': name}})
     .then( res => {
-      setTestRes(JSON.stringify(res.data));
-      console.log(JSON.stringify(res.data));
-    })
-    .catch( (err) => {
-      console.error(err);
-    })
-  };
-
-  const test = async () => {
-    await axios.get('http://localhost:8888')
-    .then( res => {
-      setTestRes(res.data.data);
+      let retData = res.data;
+      console.log(retData.address, retData.private_key, retData.passphrase);
+      setPubKey(retData.address);
+      setPriKey(retData.private_key);
+      setMneum(retData.passphrase);
     })
     .catch( (err) => {
       console.error(err);
@@ -42,27 +39,37 @@ const Home = () => {
   };
 
   useEffect( () => {
-    test();
+    // test();
   }, []);
 
   return (
     <div id='home' className='content content-center'>
-      
-      <div id="login">
-        <button variant="primary" onClick={ () => {navigate('/modelupload');}}>Model Upload</button>
-        <button variant="primary" onClick={ async () => {navigate('/modelrun');}}>Model Run</button>
-        <button variant="primary" onClick={ async () => { await createAccount('Test')}}>Test Generate Account</button>
-      </div>
-
       {
-        test ? 
+        login ? 
+        // if logged in (i.e. public key bound), present two options to proceed
         <>
-          <h3>Test Response</h3>
-          <div>{testRes}</div>
+          <div id="redirect">
+            <button variant="primary" onClick={ () => {navigate('/modelupload');}}>Model Upload</button>
+            <button variant="primary" onClick={ async () => {navigate('/modelrun');}}>Model Run</button>
+          </div>
+          <div id="login">
+            Public key: {pubKey}
+            <br></br>
+            Private key: {priKey}
+            <br></br>
+            Mneumonics: {mneum}
+            <p>
+              Login by mneumonics, will be replaced by wallet connect using AlgoSigner at some point.
+            </p>
+          </div>
         </>
         :
         <>
-        <div>No results found</div>
+          <div id="account">
+            <button variant="primary" onClick={ async () => {await createAccount('Test'); setLogin(true);} }>
+              Test Generate Account
+            </button>
+          </div>
         </>
       }
     </div>
