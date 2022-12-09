@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  margin: 1rem 3rem 3rem 1rem;
+  margin-left: 4vw;
+  margin-right: 4vw;
 }
 
 * {
@@ -11,4 +12,10 @@
 
 html, body {
   height: 100%;
+}
+
+.content {
+  margin-top: 2vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
 }

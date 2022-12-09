@@ -2,6 +2,35 @@
   font-size: 22pt;
 } */
 
+#login {
+  width: inherit;
+}
+
 #login p {
   color: #ff6e6e;
 }
+
+#redirect {
+  align-items: center;
+  display: inline-flex;
+  /* width: 50vw; */
+}
+
+#redirect button {
+  margin: 0 1vw 0 1vw;
+}
+
+.tmp {
+  margin: 1em;
+}
+
+#account {
+  margin-top: 6vw;
+  align-content: center;
+  display: inline-grid;
+}
+
+#connectAlgoAcnt {
+  display: inline-flex;
+}
+

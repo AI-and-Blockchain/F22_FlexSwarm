@@ -5,6 +5,7 @@ import { ClientContext } from './context/ClientContext';
 import Home from './pages/home/Home';
 import ModelRun from './pages/model-run/ModelRun';
 import ModelUpload from './pages/model-upload/ModelUpload';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
@@ -27,15 +28,19 @@ function App() {
 
 
     <div className="App">
-      Swarm Learning with Flexible Labels Simulation
-      <hr></hr>
-      <Router>
-        <Routes>
-          <Route path='/home' element={<Home/>} />
-          <Route path='/modelupload' element={<ModelUpload/>} />
-          <Route path='/modelrun' element={<ModelRun/>} />
-        </Routes>
-      </Router>
+      
+      <NavBar/>
+      <div className="content">
+        <h5>Swarm Learning with Flexible Labels Simulation</h5>
+        <hr></hr>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/modelupload' element={<ModelUpload/>} />
+            <Route path='/modelrun' element={<ModelRun/>} />
+          </Routes>
+        </Router>
+      </div>
     </div>
     </ClientContext.Provider>
   );
