@@ -11,6 +11,3 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
 @REM Download required packages
 pip install -r .\requirements.txt
-
-@REM Migrate Django Application
-python .\manage.py migrate
