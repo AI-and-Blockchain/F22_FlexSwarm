@@ -17,7 +17,7 @@ const NavBar = () => {
 
   const disconnect = () => {
     setPubKey(null);
-    setLogin(null);
+    setLogin(false);
     setPriKey(null);
     setMneum(null);
   }

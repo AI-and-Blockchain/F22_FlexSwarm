@@ -3,10 +3,15 @@
 } */
 
 #login {
-  width: inherit;
+  /* width: 60%; */
+  text-align: left;
 }
 
-#login p {
+#login div {
+  text-align: left;
+}
+
+p {
   color: #ff6e6e;
 }
 
@@ -26,11 +31,35 @@
 
 #account {
   margin-top: 6vw;
-  align-content: center;
+  align-items: center;
   display: inline-grid;
 }
 
 #connectAlgoAcnt {
   display: inline-flex;
+}
+
+#sep {
+  position: relative;
+  text-align: center;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+  
+#sep span {
+  display: inline-block;
+  padding: 0 10px;
+  background: #fff;
+}
+#sep:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: #ccc;
 }
 

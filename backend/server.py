@@ -1,6 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+import sys
+sys.path.append("..")
+# Change path to access sibling directory module
+from core.blockchain.smart import generate_algorand_keypair
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -35,10 +40,7 @@ def generateAcnt():
     'passphrase': passphrase,
   }
   """
-  # Change path to access sibling directory module
-  import sys
-  sys.path.append("..")
-  from core.blockchain.smart import generate_algorand_keypair
+
   data = request.json
   userName = data['params']['name']
   address, private_key, passphrase = generate_algorand_keypair(userName)
@@ -50,6 +52,11 @@ def generateAcnt():
   }
   print(ret)
   return jsonify(ret)
+
+
+# @app.route('/modelUpload', methods=['POST'])
+# def modelUpload():
+
 
 
 

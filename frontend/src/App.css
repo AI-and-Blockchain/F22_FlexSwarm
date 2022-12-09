@@ -1,7 +1,7 @@
 .App {
   text-align: center;
-  margin-left: 4vw;
-  margin-right: 4vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 * {

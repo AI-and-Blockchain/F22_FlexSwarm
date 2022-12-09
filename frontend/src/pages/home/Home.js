@@ -3,7 +3,7 @@ import React, {useState, useContext, useEffect, Suspense} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Home.css";
 import NavBar from '../../components/NavBar/NavBar';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import axios from 'axios';
 import { ClientContext } from '../../context/ClientContext';
 
@@ -44,15 +44,21 @@ const Home = () => {
         // if logged in (i.e. public key bound), present two options to proceed
         <>
           <div id="login">
-            Public key: {pubKey}
+            <div className="font-weight-bold">Public Key: <br></br>
+              {pubKey}
+            </div>
             <br></br>
             {/* Private key: {priKey}
             <br></br> */}
-            Mneumonics: {mneum}
-            <p>
-              Login by mneumonics, will be replaced by wallet connect using AlgoSigner at some point.
-            </p>
+            <div className="font-weight-bold">Mneumonics: <br></br>
+              {mneum}
+            </div>
+            <br></br>
+            <br></br>
           </div>
+          <p>
+            Login by mneumonics, will be replaced by wallet connect using AlgoSigner.
+          </p>
           <div id="redirect">
             <button id="tmp" type="button" className="btn btn-secondary btn-inline" 
               onClick={ () => {navigate('/modelupload');}
