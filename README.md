@@ -19,8 +19,8 @@ We plan to use the CIFAR-10 dataset for simulation and testing. Then, we evaluat
     * Create build_model function
     * Run simulation
 
-2. Federated Learning:
-    * Implement asynchronous model parameters (at least, list of numbers and strings) sharing with homomorphic encryption operations on tensors
+2. Model Parameter Sharing:
+    * Implement asynchronous model parameters (at least, list of numbers and strings) sharing with homomorphic encryption operations on tensors.
     * 
 
 3. Blockchain Component:
