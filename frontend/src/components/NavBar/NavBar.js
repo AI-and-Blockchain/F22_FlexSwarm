@@ -22,9 +22,6 @@ const NavBar = () => {
     setMneum(null);
   }
 
-  // useEffect( () => {
-    
-  // }, [])
 
   return (
     <nav id="navbar" className="navbar navbar-light bg-light justify-content-between">
@@ -36,7 +33,10 @@ const NavBar = () => {
       :
       <>
         <div className="nav-item">{pubKey}</div>
-        <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Disconnect</button>
+        <button className="btn btn-outline-danger my-2 my-sm-0" type="submit" 
+          onClick={() => {disconnect();}}>
+          Disconnect
+        </button>
       </>
       }
     </nav>
