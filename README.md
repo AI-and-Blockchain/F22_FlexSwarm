@@ -1,4 +1,4 @@
-# Federated Learning With Flexible Labels
+# FlexSwarm: Swarm Learning With Flexible Labels
 
 **A Decentralized AI Architecture for Training an Ensemble Model With Flexible Labels**
 
