@@ -2,14 +2,14 @@
 Mac & Linux:
 
 1. Navigate to backend directory, 
-2. Create venv, `python3 -m venv venv`
+2. Create venv, `python3.8 -m venv venv`
 3. Activate venv, `source venv/bin/activate`
 4. Install requirements `python(version) pip install -r requirements.txt`
 5. Deactivate use `deactivate`
-6. `python server.py`
+6. `python3.8 server.py`
 
 
-Note that `torch<=1.10.0 and >=1.8.1` is required by `syft 0.6.0`. And `torch==1.10.0` installation with some newer versions of python3 might return the following error. Recommended to initialize ``venv` with `python3.7` or `python3.8`
+Note that `torch<=1.10.0 and >=1.8.1` is required by `syft 0.6.0`. And `torch==1.10.0` installation, some newer versions of python3 might return the following errors. Recommended to initialize `venv` with `python3.7` or `python3.8`
 
 ```
 pip3.10 install torch==1.10.1 torchvision==0.11.2

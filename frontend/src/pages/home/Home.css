@@ -22,7 +22,7 @@ p {
 }
 
 #redirect button {
-  margin: 0 1vw 0 1vw;
+  margin: 0vw 1vw;
 }
 
 .tmp {
@@ -30,7 +30,7 @@ p {
 }
 
 #account {
-  margin-top: 6vw;
+  margin-top: 5vw;
   align-items: center;
   display: inline-grid;
 }

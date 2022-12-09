@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* align-items: center; */
   padding-left: 2vw;
   padding-right: 2vw;
 }
@@ -11,11 +11,17 @@
 }
 
 html, body {
-  height: 100%;
+  height: calc(100%-(110px));
+  overflow-y: auto;
 }
 
 .content {
   margin-top: 2vw;
   padding-left: 4vw;
   padding-right: 4vw;
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
 }
