@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html, body {
+  height: 100%;
+}
+
+.content {
+  margin-top: 2vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
